@@ -56,7 +56,7 @@ resource "aws_subnet" "prod_public" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "public-subnet"
+    Name = "prod-subnet"
   }
 }
 

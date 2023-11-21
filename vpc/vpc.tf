@@ -37,6 +37,29 @@ resource "aws_subnet" "dev_public" {
   }
 }
 
+resource "aws_vpc" "prod" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_support   = true
+  enable_dns_hostnames = true
+
+  tags = {
+    Name = "prod-vpc"
+  }
+
+}
+
+resource "aws_subnet" "prod_public" {
+  vpc_id            = aws_vpc.prod.id
+  cidr_block        = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "public-subnet"
+  }
+}
+
 
 resource "aws_instance" "dev_server" {
   ami           = "ami-0230bd60aa48260c6"
@@ -45,6 +68,18 @@ resource "aws_instance" "dev_server" {
 
   tags = {
     Name = "dev"
+  }
+
+}
+
+
+resource "aws_instance" "prod_server" {
+  ami           = "ami-0230bd60aa48260c6"
+  instance_type = "t2.micro"
+  subnet_id     = aws_subnet.prod_public.id
+
+  tags = {
+    Name = "prod"
   }
 
 }

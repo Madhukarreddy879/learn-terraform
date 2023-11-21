@@ -34,4 +34,5 @@ output "access_key_id" {
 
 output "secret_access_key" {
   value = aws_iam_access_key.lucy_access_key.secret
+  sensitive = = "true"
 }

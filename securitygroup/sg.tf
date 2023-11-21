@@ -51,7 +51,7 @@ resource "aws_instance" "dev_server" {
   ami           = "ami-0230bd60aa48260c6"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.dev_public.id
-  security_groups = "aws_security_group.dev.id"
+  security_group = [aws_security_group.dev.id]
 
   tags = {
     Name = "dev"

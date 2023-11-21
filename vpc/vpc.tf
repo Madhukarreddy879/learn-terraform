@@ -39,7 +39,7 @@ resource "aws_subnet" "dev_public" {
 
 
 resource "aws_instance" "dev_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-0230bd60aa48260c6"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.dev_public.id
 

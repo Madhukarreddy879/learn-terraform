@@ -11,6 +11,7 @@ terraform {
 
 provider "aws" {
   region  = "us-east-1"
+  
 }
 
 resource "aws_vpc" "dev" {
@@ -36,16 +37,3 @@ resource "aws_subnet" "dev_public" {
   }
 }
 
-resource "aws_instance" "dev_server" {
-  ami           = "ami-830c94e3"
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.dev_public.id
-
-  tags = {
-    Name = "dev"
-  }
-
-}
-
-
-###first

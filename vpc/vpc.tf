@@ -26,7 +26,7 @@ resource "aws_vpc" "dev" {
 }
 
 resource "aws_subnet" "dev_public" {
-  vpc_id            = "aws_vpc.dev_public.id"
+  vpc_id            = "aws_vpc.aws_subnet.dev_public.id"
   cidr_block        = "10.0.1.0/24"
   availability_zone = "us-east-1a"
 

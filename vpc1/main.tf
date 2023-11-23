@@ -75,7 +75,7 @@ resource "aws_route_table" "second_rt" {
   }
 
 resource "aws_route_table_association" "public_subnet_asso" {
- count = var(var.Public_subnet_cidr)
+ count =       length(var.Public_subnet_cidr)
  subnet_id      = element(aws_subnet.public_subnet[*].id, count.index)
  route_table_id = aws_route_table.second_rt.id
 }

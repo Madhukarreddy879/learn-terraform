@@ -44,9 +44,19 @@ resource "aws_subnet" "private_subnet" {
   vpc_id = aws_vpc.vpc.id
   cidr_block = element(var.Private_subnet_cidr, count.index)
   availability_zone = element(var.azs, count.index)
-  
+
   tags = {
     Name = "Privata Subnet ${count.index + 1}"
   }
 }
+
+
+resource "aws_internet_gateway" "gw" {
+  vpc_id = aws_vpc.vpc.id
+
+  tags = {
+    Name = "Project VPC  IG"
+  }
+}
+
 

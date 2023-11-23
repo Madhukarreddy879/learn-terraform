@@ -18,6 +18,7 @@ provider "aws" {
 
 resource "aws_vpc" "vpc" {
     cidr_block = "10.0.0.0/16"
+    region  = "us-east-1a"
 
     tags = {
       Name = "Project Vpc"
@@ -29,6 +30,7 @@ resource "aws_subnet" "public_subnet" {
   count = length(var.Public_subnet_cidr)  
   vpc_id = aws_vpc.vpc.id
   cidr_block = element(var.Public_subnet_cidr, count.index)
+  
 
   tags = {
     Name = "Public Subnet ${count.index + 1}"

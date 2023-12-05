@@ -2,7 +2,7 @@
 
 variable "ami_name" {
   description = "AMI name"
-  default     = "ami-0230bd60aa48260c6"
+  default     = "ami-830c94e3"
 }
 
 variable "instance_names" {

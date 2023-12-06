@@ -1,20 +1,24 @@
-- name: Install Nginx on Ubuntu
+---
+- name: Install Nginx on Amazon Linux
   hosts: web
-  become: true # Run tasks as sudo
-  become_user: Ubuntu
+  become: yes
 
   tasks:
-  - name: Update apt package cache
-    apt:
-      update_cache: yes
+    - name: Update package cache
+      yum:
+        name: '*'
+        state: latest
+      become: yes
 
-  - name: Install Nginx
-    apt:
-      name: nginx
-      state: present
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+      become: yes
 
-  - name: Start Nginx service
-    service:
-      name: nginx
-      state: started
-      enabled: yes
+    - name: Start Nginx and enable on boot
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+

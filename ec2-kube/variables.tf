@@ -8,5 +8,5 @@ variable "ami_name" {
 variable "instance_names" {
   description = "List of instance names"
   type        = list(string)
-  default     = ["master", "node1", "node2"]
+  default     = ["web", "apache", "node2"]
 }

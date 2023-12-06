@@ -18,7 +18,7 @@ resource "aws_instance" "ec2_instance" {
 
   ami           = var.ami_name
   instance_type = "t2.micro"  # replace with your desired instance type
-  key_name = "madhuansible.pem"
+  key_name = "madhuansible"
 
   tags = {
     Name = var.instance_names[count.index]
